@@ -1,0 +1,154 @@
+/* src/App.css */
+
+/* --- Globale Variablen & Reset --- */
+:root {
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --sidebar-bg: #181818;
+  --text-primary: #ffffff;
+  --text-secondary: #aaaaaa;
+  --accent-color: #bb86fc;
+  --primary-btn: #3700b3;
+  --nav-active: #2c2c2c;
+  --border-color: #333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden; /* Verhindert Scrollen des ganzen Fensters, wir scrollen nur den Inhalt */
+}
+
+/* --- Haupt-Layout (Grid System) --- */
+.app-container {
+  display: grid;
+  height: 100vh; /* Volle Bildschirmhöhe */
+  width: 100vw;  /* Volle Bildschirmbreite */
+  
+  /* STANDARD (MOBILE): Inhalt oben, Navi unten */
+  grid-template-rows: 1fr auto; 
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+    "content"
+    "nav";
+}
+
+/* --- Content Bereich --- */
+.content {
+  grid-area: content;
+  overflow-y: auto; /* Scrollbar nur hier, wenn Inhalt zu lang */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* Damit es auf Desktop nicht zu breit wird, begrenzen wir den inneren Inhalt, zentrieren ihn aber */
+  align-items: center; 
+}
+
+/* Wrapper für die Karten, damit sie auf Desktop nicht unendlich breit werden */
+.content > * {
+  width: 100%;
+  max-width: 800px; /* Auf Desktop maximal 800px breit, sieht besser aus */
+}
+
+/* --- Navigation --- */
+.main-nav {
+  grid-area: nav;
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  z-index: 100;
+  /* Für iPhone X und neuer (Home Balken unten) */
+  padding-bottom: env(safe-area-inset-bottom); 
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 0;
+}
+
+.nav-btn.active {
+  color: var(--accent-color);
+  background-color: transparent; /* Kein Hintergrund auf Mobile, nur Farbe */
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+}
+
+/* --- Desktop Ansicht (ab 768px Breite) --- */
+@media (min-width: 768px) {
+  .app-container {
+    /* DESKTOP: Navi links (Sidebar), Inhalt rechts */
+    grid-template-rows: 1fr;
+    grid-template-columns: 250px 1fr; /* 250px Sidebar, Rest Inhalt */
+    grid-template-areas: 
+      "nav content";
+  }
+
+  .main-nav {
+    flex-direction: column; /* Buttons untereinander */
+    justify-content: flex-start; /* Oben anfangen */
+    border-top: none;
+    border-right: 1px solid var(--border-color);
+    background-color: var(--sidebar-bg);
+    padding-top: 40px;
+    gap: 10px;
+  }
+
+  .nav-btn {
+    flex-direction: row; /* Icon links neben Text */
+    font-size: 1.1rem;
+    padding: 15px 25px;
+    width: 90%;
+    border-radius: 0 25px 25px 0; /* Runde Ecken rechts */
+    margin-right: auto; /* Links bündig */
+  }
+
+  .nav-btn.active {
+    background-color: rgba(187, 134, 252, 0.15); /* Leichter Hintergrund */
+    border-left: 4px solid var(--accent-color); /* Lila Balken links */
+  }
+
+  .nav-icon {
+    margin-right: 15px;
+  }
+  
+  /* Titel im Header verstecken wir auf Mobile vielleicht, aber auf Desktop in Sidebar? 
+     Lassen wir erstmal im Content */
+}
+
+/* --- Karten Styling (Bleibt ähnlich) --- */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+}
+
+h1 {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 0;
+  text-align: center;
+}
