@@ -15,72 +15,75 @@
 | --- | --- | --- | --- | --- | --- |
 | 1   | 09.01.2026 | 1.0 | Alle | Erstellung | Luca Aigner |
 | 2   | 16.01.2026 | 1.1 | 5.3, 5.4, 6.2 | Erweiterung | Luca Aigner |
+| 3   | 27.01.2026 | 1.1 | 4.4, 5.3.2 | Erweiterung/Änderung | Luca Aigner |
 
 Inhalt
 
-[**1** **Einleitung** 4](#_Toc219473233)
+[**1** **Einleitung** 4](#_Toc220435320)
 
-[**2** **Allgemeines** 4](#_Toc219473234)
+[**2** **Allgemeines** 4](#_Toc220435321)
 
-[2.1 **Ziel und Zweck des Dokuments** 4](#_Toc219473235)
+[2.1 **Ziel und Zweck des Dokuments** 4](#_Toc220435322)
 
-[2.2 **Ausgangssituation** 4](#_Toc219473236)
+[2.2 **Ausgangssituation** 4](#_Toc220435323)
 
-[2.3 **Projektbezug** 4](#_Toc219473237)
+[2.3 **Projektbezug** 4](#_Toc220435324)
 
-[2.4 **Abkürzungen** 4](#_Toc219473238)
+[2.4 **Abkürzungen** 4](#_Toc220435325)
 
-[2.5 **Teams und Schnittstellen** 4](#_Toc219473239)
+[2.5 **Teams und Schnittstellen** 4](#_Toc220435326)
 
-[**3** **Konzept** 5](#_Toc219473240)
+[**3** **Konzept** 5](#_Toc220435327)
 
-[3.1 **Ziel(e) des Anbieters** 5](#_Toc219473241)
+[3.1 **Ziel(e) des Anbieters** 5](#_Toc220435328)
 
-[3.2 **Ziel(e) und Nutzen des Anwenders** 5](#_Toc219473242)
+[3.2 **Ziel(e) und Nutzen des Anwenders** 5](#_Toc220435329)
 
-[3.3 **Zielgruppe(n)** 5](#_Toc219473243)
+[3.3 **Zielgruppe(n)** 5](#_Toc220435330)
 
-[3.3.1 **Endanwender (Konsumenten / Partygäste)** Diese Gruppe nutzt das Gerät ausschließlich zur Getränkeentnahme. 5](#_Toc219473244)
+[3.3.1 **Endanwender (Konsumenten / Partygäste)** Diese Gruppe nutzt das Gerät ausschließlich zur Getränkeentnahme. 5](#_Toc220435331)
 
-[3.3.2 **Betreiber (Gastgeber / Administratoren)** Diese Gruppe ist für die Inbetriebnahme, Befüllung und Konfiguration der Mischverhältnisse zuständig. 6](#_Toc219473245)
+[3.3.2 **Betreiber (Gastgeber / Administratoren)** Diese Gruppe ist für die Inbetriebnahme, Befüllung und Konfiguration der Mischverhältnisse zuständig. 6](#_Toc220435332)
 
-[3.3.3 **Privatanwender (Haushalt / Eigenbedarf)** Diese Zielgruppe stellt eine Personalunion aus Betreiber und Endanwender dar. Das Gerät wird im privaten Wohnbereich dauerhaft oder temporär aufgestellt. 6](#_Toc219473246)
+[3.3.3 **Privatanwender (Haushalt / Eigenbedarf)** Diese Zielgruppe stellt eine Personalunion aus Betreiber und Endanwender dar. Das Gerät wird im privaten Wohnbereich dauerhaft oder temporär aufgestellt. 6](#_Toc220435333)
 
-[4 **Funktionale Anforderungen** 6](#_Toc219473247)
+[4 **Funktionale Anforderungen** 6](#_Toc220435334)
 
-[4.1 **Kernfunktionalitäten (Hardware & Steuerung)** 6](#_Toc219473248)
+[4.1 **Kernfunktionalitäten (Hardware & Steuerung)** 6](#_Toc220435335)
 
-[4.2 **Web-Interface & Konfiguration (React App)** 6](#_Toc219473249)
+[4.2 **Web-Interface & Konfiguration (React App)** 7](#_Toc220435336)
 
-[4.3 **Datenhaltung & Kommunikation** 6](#_Toc219473250)
+[4.3 **Datenhaltung & Kommunikation** 7](#_Toc220435337)
 
-[**5** **Nichtfunktionale Anforderungen** 6](#_Toc219473251)
+[4.4 **Optionale Erweiterung:** Gamification-Modul (Stochastisches Belohnungssystem) Dieses Modul dient der Erhöhung der Benutzerinteraktion durch einen spielerischen Ansatz ("Slot-Machine-Effekt"). 7](#_Toc220435338)
 
-[5.1 **Allgemeine Anforderungen** 6](#_Toc219473252)
+[**5** **Nichtfunktionale Anforderungen** 8](#_Toc220435339)
 
-[5.2 **Gesetzliche Anforderungen** 6](#_Toc219473253)
+[5.1 **Allgemeine Anforderungen** 8](#_Toc220435340)
 
-[5.3 **Technische Anforderungen** 6](#_Toc219473254)
+[5.2 **Gesetzliche Anforderungen** 8](#_Toc220435341)
 
-[**5.3.1** **Web:** 6](#_Toc219473255)
+[5.3 **Technische Anforderungen** 8](#_Toc220435342)
 
-[**5.3.2** **Hardware:** 6](#_Toc219473256)
+[5.3.1 **Web:** 8](#_Toc220435343)
 
-[5.4 **Betriebliche Anforderungen** 6](#_Toc219473257)
+[5.3.2 **Hardware:** 8](#_Toc220435344)
 
-[6 Rahmenbedingungen 7](#_Toc219473258)
+[5.4 **Betriebliche Anforderungen** 8](#_Toc220435345)
 
-[6.1 Zeitplan 7](#_Toc219473259)
+[6 Rahmenbedingungen 8](#_Toc220435346)
 
-[_6.2_ **Rahmenbedingungen: Technische Anforderungen (Entwicklungsumgebung)** 7](#_Toc219473260)
+[6.1 Zeitplan 8](#_Toc220435347)
 
-[6.3 Problemanalyse 7](#_Toc219473261)
+[_6.2_ **Rahmenbedingungen: Technische Anforderungen (Entwicklungsumgebung)** 8](#_Toc220435348)
 
-[6.4 Qualität 7](#_Toc219473262)
+[6.3 Problemanalyse 10](#_Toc220435349)
 
-[7 Liefer- und Abnahmebedingungen 7](#_Toc219473263)
+[6.4 Qualität 10](#_Toc220435350)
 
-[8 Anhang 7](#_Toc219473264)
+[7 Liefer- und Abnahmebedingungen 10](#_Toc220435351)
+
+[8 Anhang 10](#_Toc220435352)
 
 # **Einleitung**
 
@@ -182,6 +185,21 @@ Gemütliche Zubereitung eines Mischgetränks durch einen Knopfdruck.
 - **/F100/ Persistente Speicherung:** Änderungen an den Rezepten, die über das Web-Interface vorgenommen werden, müssen dauerhaft im Flash-Speicher des ESP32 gespeichert werden (z.B. als JSON-Datei). Die Einstellungen müssen nach einem Stromausfall wiederhergestellt werden.
 - **/F110/ API-Schnittstelle:** Der ESP32 muss eine REST-API (oder vergleichbare Schnittstelle) bereitstellen, über die das React-Frontend die aktuellen Konfigurationen lesen (GET) und neue Konfigurationen schreiben (POST) kann.
 
+## **Optionale Erweiterung:** Gamification-Modul (Stochastisches Belohnungssystem)  
+
+Dieses Modul dient der Erhöhung der Benutzerinteraktion durch einen spielerischen Ansatz ("Slot-Machine-Effekt").
+
+- /F_OPT_010/ Signalverarbeitung Münzeinwurf: Das System muss digitale Impulse eines externen Münzprüfers (Coin Acceptor) erfassen. Ein valider Einwurf wird als "Trigger-Event" gewertet, der das System aus dem Ruhezustand weckt.
+- /F_OPT_020/ Physische Interaktion (Hebel/Trigger): Der Spielmechanismus wird über einen physischen Aktor (Hebelmechanik mit Mikroschalter oder Arcade-Button) gestartet.
+  - Sperre: Der Hebel ist standardmäßig softwareseitig deaktiviert. Betätigungen ohne vorherigen Münzeinwurf werden ignoriert (ggf. mit visueller Fehlermeldung).
+  - Freigabe: Erst nach registriertem Münzeinwurf wird der Hebel für genau einen Spielzyklus freigegeben.
+- /F_OPT_030/ Lokale Visualisierung (Display): Das Gerät verfügt über ein integriertes Display zur direkten Nutzerführung am Gerät, unabhängig vom Web-Interface.
+  - Idle-State: Anzeige einer Aufforderung (z.B. "Münze einwerfen").
+  - Game-State: Nach Betätigung des Hebels visualisiert das Display den Zufallsprozess (z.B. durchlaufende Symbole).
+  - Result-State: Anzeige von "Gewinn" (Auslösen der Pumpen) oder "Niete".
+- /F_OPT_040/ Zufallsalgorithmus (RNG): Der Mikrocontroller führt eine Zufallsberechnung durch. Die Gewinnwahrscheinlichkeit (z.B. 1:10) ist variabel.
+- /F_OPT_050/ Admin-Konfiguration (Web): Die Konfiguration der Gewinnwahrscheinlichkeit und des ausgegebenen "Gewinn-Getränks" erfolgt ausschließlich über einen geschützten Bereich im React-Webinterface (Admin-Panel), auf den normale Endanwender keinen Zugriff haben.
+
 # **Nichtfunktionale Anforderungen**
 
 ## **Allgemeine Anforderungen**
@@ -252,7 +270,7 @@ Barrierefreiheit (Accessibility) Die Software orientiert sich an grundlegenden P
 
 **Aktorik & Fluidik**
 
-- **Pumpen:** Einsatz von zwei selbstansaugenden Membranpumpen (DC 12V).
+- **Pumpen:** Einsatz von zwei selbstansaugenden Membranpumpen (6V-12V).
   - _Anforderung:_ Die Pumpen müssen lebensmittelecht sein und eine Saughöhe aufweisen, die es erlaubt, Flüssigkeiten aus unterhalb stehenden Behältern zu fördern (Self-priming).
 - **Leistungselektronik (Treiberstufe):**
   - Da der Mikrocontroller (3.3V) die Pumpen (6V) nicht direkt treiben kann, ist eine Treiberstufe erforderlich.
@@ -262,11 +280,19 @@ Barrierefreiheit (Accessibility) Die Software orientiert sich an grundlegenden P
 
 - **Spannungsquelle:** Externes Netzteil (9V DC), welches genügend Strom (min. 2A) liefert, um beide Pumpen simultan sowie den Controller zu versorgen.
 - **Spannungswandlung:** Integration eines Step-Down-Converters (Buck Converter) zur effizienten Wandlung von 9V auf 5V/3.3V für den ESP32.
+- **Spannungswandlung (Peripherie):** Falls Komponenten mit 12V-Bedarf (z.B. Standard-Münzprüfer) eingesetzt werden, ist der Einsatz eines Step-Up-Converters (Boost Converter) von 9V auf 12V vorzusehen.
 
 **Gehäuse & Physischer Aufbau**
 
 - **Material:** Hybrid-Konstruktion aus 3D-Druck-Komponenten (für Halterungen und Passgenauigkeit) und Holz (für die Struktur/Optik).
 - **Zwei-Kammer-System:** Konstruktive Trennung in einen "Nassbereich" (Schläuche, Auslassdüse) und einen "Trockenbereich" (ESP32, Netzteil, MOSFETs), um die Elektronik vor Leckagen zu schützen.
+
+**Zusatz-Peripherie (Gamification)**
+
+- **Display-Einheit:** OLED (z.B. SH1106/SSD1306) oder TFT Modul zur Statusanzeige direkt am Gehäuse.
+- **Eingabe-Sensorik:** Mikroschalter (Microswitch) zur Erfassung der Hebel-Position (mechanischer Trigger).
+- **Münzverarbeitung:** Elektronischer Münzprüfer mit 12V Puls-Signal.
+  - **Interface:** Anbindung an den ESP32 über Pegelwandler oder Spannungsteiler (Level Shifter), um das 12V Signal auf verträgliche 3.3V zu skalieren.
 
 ## **Betriebliche Anforderungen**
 
