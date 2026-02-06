@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Page-1" id="sEk3H27ZEWr9IkiaNSbX">
-        <mxGraphModel dx="1552" dy="563" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1676" dy="662" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -221,7 +221,7 @@
                 <mxCell id="_njdA9IR1P98DerD3DOh-18" value="4.4&lt;div&gt;Kalibrierung&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="787" y="533" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="2" value="1.5&lt;div&gt;Abschlusspräsentation&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="2" value="1.5&lt;div&gt;Abschlusspräsentation&lt;br&gt;Vorbereitung&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-249" y="636" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="4" value="1.6&lt;div&gt;Abschlusspräsentation&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
