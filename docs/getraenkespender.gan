@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="SYP" company="HTL SAALFELDEN" webLink="http://" view-date="2026-01-10" view-index="0" gantt-divider-location="351" resource-divider-location="300" version="3.3.3322" locale="de_DE">
+    <description/>
+    <view zooming-state="default:3" id="gantt-chart">
+        <field id="tpd3" name="Vorgang" width="200" order="0"/>
+        <field id="tpd4" name="Anfang" width="75" order="1"/>
+        <field id="tpd5" name="Ende" width="75" order="2"/>
+        <field id="tpd15" name="Notizen" width="20" order="3"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="filter.dueTodayTasks" value="false"/>
+        <option id="filter.overdueTasks" value="false"/>
+        <option id="filter.inProgressTodayTasks" value="false"/>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Ressource" width="210" order="0"/>
+        <field id="1" name="Rolle" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars base-id="Austria (Österreich)">
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="1" tue="1" wed="1" thu="1" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+        <date year="" month="1" date="1" type="HOLIDAY" color="#00cc66"><![CDATA[Neujahr (New Year)]]></date>
+        <date year="" month="1" date="6" type="HOLIDAY" color="#00cc66"><![CDATA[Heilige Drei Könige (Epiphany)]]></date>
+        <date year="" month="5" date="1" type="HOLIDAY" color="#00cc66"><![CDATA[Tag der Arbeit (Labour day)]]></date>
+        <date year="" month="8" date="15" type="HOLIDAY" color="#00cc66"><![CDATA[Mariä Himmelfahrt (Assumption)]]></date>
+        <date year="" month="10" date="26" type="HOLIDAY" color="#00cc66"><![CDATA[Nationalfeiertag (National Day)]]></date>
+        <date year="" month="11" date="1" type="HOLIDAY" color="#00cc66"><![CDATA[Allerheiligen (All Saints)]]></date>
+        <date year="" month="12" date="8" type="HOLIDAY" color="#00cc66"><![CDATA[Mariä Empfängnis (Immaculate Conception Day)]]></date>
+        <date year="" month="12" date="24" type="HOLIDAY" color="#00cc66"><![CDATA[Heiliger Abend (Christmas Eve)]]></date>
+        <date year="" month="12" date="25" type="HOLIDAY" color="#00cc66"><![CDATA[Weihnachten (Christmas)]]></date>
+        <date year="" month="12" date="26" type="HOLIDAY" color="#00cc66"><![CDATA[Stefanitag (St.Stephens)]]></date>
+        <date year="" month="12" date="31" type="HOLIDAY" color="#00cc66"><![CDATA[Silvester (New Year's Eve)]]></date>
+        <date year="2014" month="4" date="18" type="HOLIDAY" color="#00cc66"><![CDATA[Karfreitag (Good Friday): nur Protestanten]]></date>
+        <date year="2015" month="4" date="3" type="HOLIDAY" color="#00cc66"><![CDATA[Karfreitag (Good Friday): nur Protestanten]]></date>
+        <date year="2016" month="3" date="25" type="HOLIDAY" color="#00cc66"><![CDATA[Karfreitag (Good Friday): nur Protestanten]]></date>
+        <date year="2017" month="4" date="14" type="HOLIDAY" color="#00cc66"><![CDATA[Karfreitag (Good Friday): nur Protestanten]]></date>
+        <date year="2014" month="4" date="21" type="HOLIDAY" color="#00cc66"><![CDATA[Ostermontag (Easter Monday)]]></date>
+        <date year="2015" month="4" date="6" type="HOLIDAY" color="#00cc66"><![CDATA[Ostermontag (Easter Monday)]]></date>
+        <date year="2016" month="3" date="26" type="HOLIDAY" color="#00cc66"><![CDATA[Ostermontag (Easter Monday)]]></date>
+        <date year="2017" month="4" date="17" type="HOLIDAY" color="#00cc66"><![CDATA[Ostermontag (Easter Monday)]]></date>
+        <date year="2014" month="5" date="29" type="HOLIDAY" color="#00cc66"><![CDATA[Christi Himmelfahrt (Ascension)]]></date>
+        <date year="2015" month="5" date="14" type="HOLIDAY" color="#00cc66"><![CDATA[Christi Himmelfahrt (Ascension)]]></date>
+        <date year="2016" month="5" date="5" type="HOLIDAY" color="#00cc66"><![CDATA[Christi Himmelfahrt (Ascension)]]></date>
+        <date year="2017" month="5" date="25" type="HOLIDAY" color="#00cc66"><![CDATA[Christi Himmelfahrt (Ascension)]]></date>
+        <date year="2014" month="6" date="9" type="HOLIDAY" color="#00cc66"><![CDATA[Pfingstmontag (Whitmonday)]]></date>
+        <date year="2015" month="5" date="25" type="HOLIDAY" color="#00cc66"><![CDATA[Pfingstmontag (Whitmonday)]]></date>
+        <date year="2016" month="5" date="16" type="HOLIDAY" color="#00cc66"><![CDATA[Pfingstmontag (Whitmonday)]]></date>
+        <date year="2017" month="6" date="5" type="HOLIDAY" color="#00cc66"><![CDATA[Pfingstmontag (Whitmonday)]]></date>
+        <date year="2014" month="6" date="19" type="HOLIDAY" color="#00cc66"><![CDATA[Fronleichnam (Corpus Christi)]]></date>
+        <date year="2015" month="6" date="4" type="HOLIDAY" color="#00cc66"><![CDATA[Fronleichnam (Corpus Christi)]]></date>
+        <date year="2016" month="5" date="26" type="HOLIDAY" color="#00cc66"><![CDATA[Fronleichnam (Corpus Christi)]]></date>
+        <date year="2017" month="6" date="15" type="HOLIDAY" color="#00cc66"><![CDATA[Fronleichnam (Corpus Christi)]]></date>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="30" uid="3297ad16c4e24a49b7b7a10cf556cc16" name="Projektmanagment" meeting="false" start="2026-02-06" duration="18" complete="0" expand="false">
+            <task id="1" uid="7cb6c190c82943779844b3658971ba5d" name="1.2_Materialbeschaffung" meeting="false" start="2026-02-06" duration="18" complete="0" expand="true"/>
+            <task id="0" uid="ac9fd26580e7451296bc05f95c9fc15b" name="1.3_Vorbereitung_Zwischenpräsentation" meeting="false" start="2026-04-10" duration="2" complete="0" expand="true"/>
+            <task id="2" uid="3a62f97eaa9f438c8fb7756d25b726e3" name="1.4_Zwischenpräsentation" meeting="true" start="2026-04-24" duration="0" complete="0" expand="true"/>
+            <task id="25" uid="f3b1ae95aae94ceda756e77fa6979cf5" name="1.5_Vorbereitung_Abschlusspräsentation" meeting="false" start="2026-06-05" duration="2" complete="0" expand="true"/>
+            <task id="3" uid="a43724022e5f46c093877b53a1ee0d43" name="1.6_Abschlusspräsentation" meeting="true" start="2026-06-19" duration="0" complete="0" expand="true"/>
+        </task>
+        <task id="31" uid="9a3b310f44e145cca7a319766b416abc" name="Software" meeting="false" start="2026-02-06" duration="7" complete="0" expand="false">
+            <task id="32" uid="80369bc8908b496a9ecd4f30758863d0" name="Frontend" meeting="false" start="2026-02-06" duration="5" complete="0" expand="true">
+                <task id="16" uid="95780d3a77fd46d38fc8c3238f27d7f1" name="2.1.1_Projekt Setup (React)" meeting="false" start="2026-02-06" duration="1" complete="0" expand="true">
+                    <depend id="17" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="17" uid="1030278befa94f919578139a2bd73071" name="2.1.2_Web UI Design" meeting="false" start="2026-02-13" duration="2" complete="0" expand="true">
+                    <depend id="18" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="18" uid="f8dbad7092b640d4a74d0405088a01d1" name="2.1.3_Logik Implementierung" meeting="false" start="2026-02-27" duration="1" complete="0" expand="true">
+                    <depend id="19" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="19" uid="82103b5f1924458097de2fde9f15f6ad" name="2.1.4_Build und Optimierung" meeting="false" start="2026-03-06" duration="1" complete="0" expand="true">
+                    <depend id="12" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+            <task id="33" uid="b4fade8438454f3db3f92b5deb65d546" name="Backend" meeting="false" start="2026-02-06" duration="7" complete="0" expand="true">
+                <task id="20" uid="0d3b30301d58463fb3519f3f4190a5ee" name="2.2.1_MicroPython lernen &amp; Basics" meeting="false" start="2026-02-06" duration="2" complete="0" expand="true">
+                    <depend id="21" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="21" uid="f93a0db7c1824bbb8278cdc9b2e993ed" name="2.2.2_Setup (ESP32 flashen)" meeting="false" start="2026-02-20" duration="1" complete="0" expand="true">
+                    <depend id="22" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="22" uid="48daf197a13c48b4b2c696071f88e561" name="2.2.3_Pumpen-Treiber schreiben" meeting="false" start="2026-02-27" duration="1" complete="0" expand="true">
+                    <depend id="23" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="23" uid="e14bf569274a4c4786ebe1e41fe1bab2" name="2.2.4_Webserver und API" meeting="false" start="2026-03-06" duration="2" complete="0" expand="true">
+                    <depend id="12" type="2" difference="0" hardness="Strong"/>
+                    <depend id="24" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="24" uid="da096cd3c5be4a9fa6b9074d1b2de9b3" name="2.2.5_Dateisysteme (Config speichern)" meeting="false" start="2026-03-20" duration="1" complete="0" expand="true">
+                    <depend id="13" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+        </task>
+        <task id="26" uid="3e9b3f2b92054be48e0347e73069452e" name="Hardware" meeting="false" start="2026-01-30" duration="9" complete="0" expand="false">
+            <task id="27" uid="37038f804e3644bb985dbcd6f2c9c68b" name="Elektronik" meeting="false" start="2026-02-06" duration="8" complete="0" expand="true">
+                <task id="9" uid="e32ea4dbf92c4d658acf2412299e219b" name="3.1.1_Schaltplan erstellen" meeting="false" start="2026-02-06" duration="3" complete="0" expand="true">
+                    <depend id="10" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="10" uid="44cc4f13b6eb489c8010d71bb73e6400" name="3.1.2_Testaufbau" meeting="false" start="2026-02-27" duration="1" complete="0" expand="true">
+                    <depend id="11" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="11" uid="76be848856044017a452edccba011b62" name="3.1.3_Verkabelung" meeting="false" start="2026-03-20" duration="2" complete="0" expand="true">
+                    <depend id="13" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+            <task id="28" uid="1ffa779936584336aec6932ed69ad9ba" name="Mechanik und Gehäuse" meeting="false" start="2026-01-30" duration="7" complete="0" expand="true">
+                <task id="4" uid="3eabf4faa27b44a691330c8b3d84f5fa" name="3.2.1_CAD_Design" meeting="false" start="2026-02-06" duration="3" complete="0" expand="true">
+                    <depend id="5" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="5" uid="55c96a1d0a64421eb201f89bf2ddb35e" name="3.2.2_3D_Druck" meeting="false" start="2026-02-27" duration="1" complete="0" expand="true">
+                    <depend id="8" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="6" uid="dbb5232aee634cfabd16af7f9ef72145" name="3.2.3_Gehäuse_Zuschnitt" meeting="false" start="2026-01-30" duration="3" complete="0" expand="true">
+                    <depend id="7" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="7" uid="1181d9105b1f41878399de8b07110559" name="3.2.4_Gehäusebau" meeting="false" start="2026-02-20" duration="2" complete="0" expand="true">
+                    <depend id="8" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="8" uid="24cd9266a17e4bdfaeb01145d137b129" name="3.2.5_Montage" meeting="false" start="2026-03-06" duration="2" complete="0" expand="true">
+                    <depend id="11" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+        </task>
+        <task id="29" uid="44ff3bbf2e7b48579d5370bdb411b377" name="Test" meeting="false" start="2026-03-20" duration="8" complete="0" expand="false">
+            <task id="12" uid="130ba4d1df4c4e94894aa9836b6d4b5e" name="4.1_Upload Frontend" meeting="false" start="2026-03-20" duration="1" complete="0" expand="true">
+                <depend id="13" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="13" uid="71d0b388d57f4d68b3ce1fe0f45a3860" name="4.2_Funktionstest (Trocken)" meeting="false" start="2026-04-03" duration="1" complete="0" expand="true">
+                <depend id="14" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="14" uid="359159bb0949434f923feb24b440d30a" name="4.3_Wassertest (Dichtheit &amp; Pumpen)" meeting="false" start="2026-04-10" duration="1" complete="0" expand="true">
+                <depend id="15" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="15" uid="a21c22d39ec54b9eabaaf444b6113f51" name="4.4_Kalibrierung (Mengenmessung)" meeting="false" start="2026-04-17" duration="4" complete="0" expand="true"/>
+        </task>
+    </tasks>
+    <resources>
+        <resource id="0" name="Luca Aigner" function="SoftwareDevelopment:2" contacts="luca.aigner@htl-saalfelden.at" phone=""/>
+        <resource id="1" name="Raphael Thaler" function="Default:1" contacts="raphael.thaler@htl-saalfelden.at" phone=""/>
+        <resource id="2" name="Lukas Gutmann" function="SoftwareDevelopment:10" contacts="lukas.gutmann@htl-saalfelden.at" phone=""/>
+        <resource id="3" name="Clemens Deutinger" function="SoftwareDevelopment:5" contacts="clemens.deutinger@htl-saalfenden.at" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="16" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="17" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="18" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="19" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="24" resource-id="0" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="12" resource-id="0" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+        <allocation task-id="13" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="14" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="15" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="20" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="21" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="22" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="23" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="24" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="12" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="13" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="15" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="9" resource-id="2" function="SoftwareDevelopment:10" responsible="true" load="100.0"/>
+        <allocation task-id="10" resource-id="2" function="SoftwareDevelopment:10" responsible="true" load="100.0"/>
+        <allocation task-id="11" resource-id="2" function="SoftwareDevelopment:10" responsible="true" load="100.0"/>
+        <allocation task-id="6" resource-id="2" function="SoftwareDevelopment:10" responsible="true" load="100.0"/>
+        <allocation task-id="7" resource-id="2" function="SoftwareDevelopment:10" responsible="true" load="100.0"/>
+        <allocation task-id="8" resource-id="2" function="SoftwareDevelopment:10" responsible="true" load="100.0"/>
+        <allocation task-id="13" resource-id="2" function="SoftwareDevelopment:10" responsible="false" load="100.0"/>
+        <allocation task-id="14" resource-id="2" function="SoftwareDevelopment:10" responsible="false" load="100.0"/>
+        <allocation task-id="4" resource-id="3" function="SoftwareDevelopment:5" responsible="true" load="100.0"/>
+        <allocation task-id="5" resource-id="3" function="SoftwareDevelopment:5" responsible="true" load="100.0"/>
+        <allocation task-id="13" resource-id="3" function="SoftwareDevelopment:5" responsible="false" load="100.0"/>
+        <allocation task-id="14" resource-id="3" function="SoftwareDevelopment:5" responsible="false" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
