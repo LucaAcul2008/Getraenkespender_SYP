@@ -1,0 +1,9 @@
+{
+  "recipes": [
+    {"id": 1, "name": "Rezept 1", "pumpA": 5.0, "pumpB": 2.0},
+    {"id": 2, "name": "Rezept 2", "pumpA": 3.0, "pumpB": 3.0},
+    {"id": 3, "name": "Wasser", "pumpA": 0.0, "pumpB": 5.0}
+  ],
+  "slotMachineChance": 10,
+  "calibrationFactor": 5.0
+}
