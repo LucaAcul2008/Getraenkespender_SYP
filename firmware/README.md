@@ -2,17 +2,34 @@
 
 ## Flash Instructions
 
-1. Install MicroPython on your ESP32 (v1.21+ recommended)
-2. Install `mpremote` or use Thonny IDE
-3. Upload all files:
+### Prerequisites
+
+| Tool | How to install |
+|---|---|
+| MicroPython on ESP32 | [https://micropython.org/download/ESP32_GENERIC/](https://micropython.org/download/ESP32_GENERIC/) (v1.21+ recommended) |
+| Node.js + npm | [https://nodejs.org](https://nodejs.org) |
+| mpremote | `pip install mpremote` |
+
+### Quick start — automated script (recommended)
+
+Connect the ESP32 via USB, then run from the **repository root**:
 
 ```bash
-mpremote cp boot.py :boot.py
-mpremote cp main.py :main.py
-mpremote cp config.json :config.json
+chmod +x flash.sh
+./flash.sh
 ```
 
-4. Build the frontend:
+This single command will:
+1. Build the React frontend (`npm install` + `npm run build`)
+2. Upload `boot.py`, `main.py`, `config.json` to the ESP32
+3. Create the `/www` directory on the ESP32 and upload the built frontend
+4. Restart the ESP32
+
+After flashing, connect to the WiFi hotspot and open the app (see [WiFi](#wifi) below).
+
+### Manual steps (alternative)
+
+1. Build the frontend:
 ```bash
 cd frontend/getraenkespender
 npm install
@@ -20,10 +37,26 @@ npm run build
 ```
 This produces `frontend/getraenkespender/www/`.
 
-5. Upload the built frontend:
+2. Upload firmware files (from the repository root):
+```bash
+mpremote cp firmware/boot.py   :boot.py
+mpremote cp firmware/main.py   :main.py
+mpremote cp firmware/config.json :config.json
+```
+
+3. Upload the built frontend:
 ```bash
 mpremote mkdir :www
-mpremote cp -r frontend/getraenkespender/www/ :www/
+# Upload all files from the www/ build output
+find frontend/getraenkespender/www -type f | while read f; do
+    remote=":www${f#frontend/getraenkespender/www}"
+    mpremote cp "$f" "$remote"
+done
+```
+
+4. Restart the ESP32:
+```bash
+mpremote reset
 ```
 
 ## GPIO Pin Assignment
