@@ -3,6 +3,8 @@ import { type GlobalConfig } from '../types';
 // Vite erkennt automatisch, ob wir entwickeln (npm run dev) oder live sind
 const IS_DEV = import.meta.env.DEV;
 
+
+
 // Simulierter Speicher für den Laptop-Modus
 let mockConfig: GlobalConfig = {
   recipes: [
@@ -10,7 +12,8 @@ let mockConfig: GlobalConfig = {
     { id: 2, name: 'Mische 2 (Sim)', pumpA: 3, pumpB: 3 },
     { id: 3, name: 'Wasser (Sim)', pumpA: 0, pumpB: 5 },
   ],
-  slotMachineChance: 10
+  slotMachineChance: 10,
+  calibrationFactor: 0
 };
 
 // --- Die echten Funktionen ---
