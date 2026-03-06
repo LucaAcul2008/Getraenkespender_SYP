@@ -39,8 +39,8 @@ mpremote cp -r frontend/getraenkespender/www/ :www/
 ## WiFi
 
 - **Mode:** Access Point
-- **SSID:** `GetraenkespenderAP`
-- **Password:** `12345678`
+- **SSID:** `GetraenkeBot_3000`
+- **Password:** `party1234`
 - **ESP32 IP:** `192.168.4.1`
 - **App URL:** `http://192.168.4.1`
 

@@ -1,18 +1,25 @@
-# firmware/boot.py
 import network
 import time
 
-def start_ap():
-    ap = network.WLAN(network.AP_IF)
-    ap.active(True)
-    ap.config(essid='GetraenkespenderAP', password='12345678', authmode=network.AUTH_WPA_WPA2_PSK)
-    timeout = 10
-    while not ap.active() and timeout > 0:
-        time.sleep(0.5)
-        timeout -= 1
-    if ap.active():
-        print('AP started, IP:', ap.ifconfig()[0])
-    else:
-        print('AP failed to start')
+# --- KONFIGURATION DEINES BOT-WLANS ---
+AP_SSID = "GetraenkeBot_3000"  # So heißt das WLAN, das du am Handy siehst
+AP_PASS = "party1234"          # Das Passwort (MUSS mindestens 8 Zeichen lang sein!)
 
-start_ap()
+def create_hotspot():
+    print("Starte Getränke-Bot Hotspot...")
+    # Access Point Interface (AP) aktivieren
+    ap = network.WLAN(network.AP_IF)
+    # Zuerst aktivieren, dann konfigurieren (wichtig bei manchen ESP32 Versionen)
+    ap.active(True)
+    ap.config(essid=AP_SSID, password=AP_PASS)
+    # Kurz warten, bis das Netzwerk steht
+    time.sleep(1)
+    print("\n✅ Eigener Hotspot ist ONLINE!")
+    print(f"📡 Finde dieses WLAN am Handy/Laptop: {AP_SSID}")
+    print(f"🔑 Das Passwort ist: {AP_PASS}")
+    # Die IP-Adresse auslesen (ist beim ESP32 als Hotspot fast immer 192.168.4.1)
+    ip_adresse = ap.ifconfig()[0]
+    print(f"🌐 Die IP-Adresse des Bots ist: {ip_adresse}")
+
+# Starten
+create_hotspot()
