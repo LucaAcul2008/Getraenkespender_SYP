@@ -5,7 +5,7 @@ interface LoginScreenProps {
   onLogin: (username: string) => void;
 }
 
-const MASTER_PASSWORD = "master-key"; // <--- Das Master-Passwort
+const MASTER_PASSWORD = "Party_1234!"; // <--- Das Master-Passwort
 
 const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
   const [mode, setMode] = useState<'login' | 'register'>('login');

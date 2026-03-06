@@ -6,6 +6,7 @@ const ESP32_IP = 'http://192.168.4.1'
 
 export default defineConfig({
   plugins: [react()],
+  base: './',
   build: {
     // Output to www/ so it can be directly uploaded to ESP32 /www/ directory
     outDir: 'www',

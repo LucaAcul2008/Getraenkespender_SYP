@@ -2,6 +2,8 @@ import type { GlobalConfig } from '../types';
 
 const IS_DEV = import.meta.env.DEV;
 
+
+// Simulierter Speicher für den Laptop-Modus
 let mockConfig: GlobalConfig = {
   recipes: [
     { id: 1, name: 'Rezept 1 (Sim)', pumpA: 5, pumpB: 2 },
