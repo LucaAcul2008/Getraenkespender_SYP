@@ -10,9 +10,9 @@ import _thread
 # --- Pin Setup ---
 PUMP_A_PIN = machine.Pin(16, machine.Pin.OUT)
 PUMP_B_PIN = machine.Pin(17, machine.Pin.OUT)
-BTN_1_PIN = machine.Pin(4, machine.Pin.IN, machine.Pin.PULL_UP)
-BTN_2_PIN = machine.Pin(5, machine.Pin.IN, machine.Pin.PULL_UP)
-BTN_3_PIN = machine.Pin(6, machine.Pin.IN, machine.Pin.PULL_UP)
+BTN_1_PIN = machine.Pin(13, machine.Pin.IN, machine.Pin.PULL_UP)
+BTN_2_PIN = machine.Pin(14, machine.Pin.IN, machine.Pin.PULL_UP)
+BTN_3_PIN = machine.Pin(15, machine.Pin.IN, machine.Pin.PULL_UP)
 
 PUMP_A_PIN.value(0)
 PUMP_B_PIN.value(0)
