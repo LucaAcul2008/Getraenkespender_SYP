@@ -8,11 +8,11 @@ import socket
 import _thread
 
 # --- Pin Setup ---
-PUMP_A_PIN = machine.Pin(16, machine.Pin.OUT)
-PUMP_B_PIN = machine.Pin(17, machine.Pin.OUT)
-BTN_1_PIN = machine.Pin(13, machine.Pin.IN, machine.Pin.PULL_UP)
-BTN_2_PIN = machine.Pin(14, machine.Pin.IN, machine.Pin.PULL_UP)
-BTN_3_PIN = machine.Pin(15, machine.Pin.IN, machine.Pin.PULL_UP)
+PUMP_A_PIN = machine.Pin(32, machine.Pin.OUT)
+PUMP_B_PIN = machine.Pin(33, machine.Pin.OUT)
+BTN_1_PIN = machine.Pin(25, machine.Pin.IN, machine.Pin.PULL_UP)
+BTN_2_PIN = machine.Pin(26, machine.Pin.IN, machine.Pin.PULL_UP)
+BTN_3_PIN = machine.Pin(27, machine.Pin.IN, machine.Pin.PULL_UP)
 
 PUMP_A_PIN.value(0)
 PUMP_B_PIN.value(0)
@@ -48,14 +48,22 @@ def run_recipe(pump_a_sec, pump_b_sec):
         return
     is_busy = True
     try:
+        start = time.ticks_ms()
         if pump_a_sec > 0:
             PUMP_A_PIN.value(1)
-            time.sleep(pump_a_sec)
-            PUMP_A_PIN.value(0)
         if pump_b_sec > 0:
             PUMP_B_PIN.value(1)
-            time.sleep(pump_b_sec)
-            PUMP_B_PIN.value(0)
+        a_done = pump_a_sec <= 0
+        b_done = pump_b_sec <= 0
+        while not (a_done and b_done):
+            elapsed = time.ticks_diff(time.ticks_ms(), start) / 1000.0
+            if not a_done and elapsed >= pump_a_sec:
+                PUMP_A_PIN.value(0)
+                a_done = True
+            if not b_done and elapsed >= pump_b_sec:
+                PUMP_B_PIN.value(0)
+                b_done = True
+            time.sleep(0.05)
     finally:
         PUMP_A_PIN.value(0)
         PUMP_B_PIN.value(0)
@@ -65,13 +73,15 @@ def run_recipe_async(pump_a_sec, pump_b_sec):
     _thread.start_new_thread(run_recipe, (pump_a_sec, pump_b_sec))
 
 # --- HTTP Helpers ---
-CORS_HEADERS = 'Access-Control-Allow-Origin: *\r\nAccess-Control-Allow-Methods: GET, POST, OPTIONS\r\nAccess-Control-Allow-Headers: Content-Type\r\n'
+# WICHTIG: Das \r\n am Ende von CORS_HEADERS wurde entfernt!
+CORS_HEADERS = 'Access-Control-Allow-Origin: *\r\nAccess-Control-Allow-Methods: GET, POST, OPTIONS\r\nAccess-Control-Allow-Headers: Content-Type'
 
 def send_json(conn, data, status=200):
     body = ujson.dumps(data)
+    # WICHTIG: Das .encode() wurde am Ende hinzugefügt
     conn.send('HTTP/1.1 {} OK\r\nContent-Type: application/json\r\n{}\r\nContent-Length: {}\r\n\r\n{}'.format(
-        status, CORS_HEADERS, len(body), body))
-
+        status, CORS_HEADERS, len(body), body).encode())
+    
 def send_options(conn):
     conn.send('HTTP/1.1 204 No Content\r\n{}\r\n'.format(CORS_HEADERS))
 
@@ -86,14 +96,25 @@ def read_body(request_text):
 
 def serve_file(conn, path):
     try:
-        with open(path, 'rb') as f:
-            content = f.read()
+        # Dateigröße herausfinden für Content-Length
+        file_size = uos.stat(path)[6]
         ext = path.split('.')[-1]
         mime = {'html': 'text/html', 'js': 'application/javascript', 'css': 'text/css',
                 'json': 'application/json', 'svg': 'image/svg+xml', 'ico': 'image/x-icon'}.get(ext, 'application/octet-stream')
-        conn.send('HTTP/1.1 200 OK\r\nContent-Type: {}\r\nContent-Length: {}\r\n\r\n'.format(mime, len(content)).encode())
-        conn.send(content)
-    except:
+        
+        # Header senden
+        conn.send('HTTP/1.1 200 OK\r\nContent-Type: {}\r\nContent-Length: {}\r\n\r\n'.format(mime, file_size).encode())
+        
+        # Datei in 1KB großen Stücken senden (spart extrem viel RAM!)
+        with open(path, 'rb') as f:
+            while True:
+                chunk = f.read(1024)
+                if not chunk:
+                    break
+                conn.send(chunk)
+                
+    except Exception as e:
+        print("Fehler beim Senden von", path, ":", e)
         conn.send(b'HTTP/1.1 404 Not Found\r\n\r\n404 Not Found')
 
 # --- HTTP Server ---
@@ -223,3 +244,4 @@ _thread.start_new_thread(start_server, ())
 
 # Poll buttons on main thread
 poll_buttons()
+
