@@ -6,11 +6,13 @@ import type { Recipe, GlobalConfig } from '../types';
 const ConfigForm: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [calibration, setCalibration] = useState<number>(5.0);
+  const [bottleA, setBottleA] = useState<number>(1500);
+  const [bottleB, setBottleB] = useState<number>(1500);
   const [loading, setLoading] = useState(true);
 
   // Smart Mixer State
   const [totalMl, setTotalMl] = useState(250);
-  const [ratioA, setRatioA] = useState(30); // Start bei 30%
+  const [ratioA, setRatioA] = useState(30);
 
   // Berechnete Werte für Smart Mixer
   const calcSecA = ((totalMl * (ratioA / 100)) / 100) * calibration;
@@ -20,6 +22,8 @@ const ConfigForm: React.FC = () => {
     api.getConfig().then((data) => {
       setRecipes(data.recipes);
       setCalibration(data.calibrationFactor || 5.0);
+      setBottleA(data.bottleA_ml || 1500);
+      setBottleB(data.bottleB_ml || 1500);
       setLoading(false);
     });
   }, []);
@@ -42,7 +46,9 @@ const ConfigForm: React.FC = () => {
     const newConfig: GlobalConfig = { 
       ...currentConfig, 
       recipes: recipes,
-      calibrationFactor: calibration
+      calibrationFactor: calibration,
+      bottleA_ml: bottleA,
+      bottleB_ml: bottleB
     };
     await api.saveConfig(newConfig);
     setLoading(false);
@@ -51,7 +57,6 @@ const ConfigForm: React.FC = () => {
 
   if (loading) return <div style={{textAlign: 'center', padding: '50px'}}>Lade Daten...</div>;
 
-  // --- STYLES ---
   const styles = {
     header: {
       background: 'linear-gradient(90deg, #ff4444, #448aff)',
@@ -70,7 +75,7 @@ const ConfigForm: React.FC = () => {
     },
     gridContainer: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', // Automatisch nebeneinander auf Desktop
+      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
       gap: '20px',
       marginBottom: '20px'
     },
@@ -93,15 +98,14 @@ const ConfigForm: React.FC = () => {
       height: '12px', width: '100%', background: '#333', borderRadius: '6px', 
       overflow: 'hidden', display: 'flex', marginTop: '15px', marginBottom: '15px'
     },
-    pumpAColor: '#ff4444', // Rot
-    pumpBColor: '#448aff', // Blau
+    pumpAColor: '#ff4444',
+    pumpBColor: '#448aff',
   };
 
   return (
     <div>
       <h2 style={styles.header}>⚙️ Mixer Konfiguration</h2>
 
-      {/* --- 1. SMART MIXER (Rechner) --- */}
       <div style={styles.calculatorCard}>
         <h3 style={{marginTop: 0, borderBottom: '1px solid #444', paddingBottom: '10px'}}>🧪 Smart Mixer</h3>
         
@@ -110,14 +114,12 @@ const ConfigForm: React.FC = () => {
           <span>Verhältnis: <strong>{ratioA}% / {100 - ratioA}%</strong></span>
         </div>
 
-        {/* Slider für Menge */}
         <input 
           type="range" min="50" max="500" step="10"
           value={totalMl} onChange={(e) => setTotalMl(parseInt(e.target.value))}
           style={{width: '100%', marginBottom: '20px', accentColor: '#03dac6'}}
         />
 
-        {/* Visueller Slider für Verhältnis (Rot zu Blau) */}
         <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
           <span style={{color: styles.pumpAColor, fontWeight: 'bold'}}>A</span>
           <input 
@@ -132,7 +134,6 @@ const ConfigForm: React.FC = () => {
           <span style={{color: styles.pumpBColor, fontWeight: 'bold'}}>B</span>
         </div>
 
-        {/* Vorschau Box */}
         <div style={{
           display: 'flex', marginTop: '20px', background: '#111', borderRadius: '8px', padding: '10px'
         }}>
@@ -164,19 +165,16 @@ const ConfigForm: React.FC = () => {
         </div>
       </div>
 
-      {/* --- 2. REZEPTE GRID (Das neue Design) --- */}
       <h3 style={{marginBottom: '15px'}}>💾 Gespeicherte Rezepte</h3>
       
       <div style={styles.gridContainer}>
         {recipes.map((recipe) => {
-          // Berechne Prozent für den visuellen Balken
           const totalSec = (recipe.pumpA || 0) + (recipe.pumpB || 0);
           const percentA = totalSec > 0 ? ((recipe.pumpA / totalSec) * 100) : 50;
           const percentB = totalSec > 0 ? ((recipe.pumpB / totalSec) * 100) : 50;
 
           return (
             <div key={recipe.id} style={styles.recipeCard}>
-              {/* Titel Zeile */}
               <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px'}}>
                 <span style={{
                   background: '#333', color: '#aaa', padding: '2px 8px', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 'bold'
@@ -185,7 +183,6 @@ const ConfigForm: React.FC = () => {
                 </span>
               </div>
 
-              {/* Name Input */}
               <div style={{marginBottom: '15px'}}>
                 <label style={styles.labelSmall}>Name des Getränks</label>
                 <input 
@@ -197,13 +194,11 @@ const ConfigForm: React.FC = () => {
                 />
               </div>
 
-              {/* Visueller Mix-Balken */}
               <div style={styles.visualBarContainer}>
                 <div style={{width: `${percentA}%`, background: styles.pumpAColor}}></div>
                 <div style={{width: `${percentB}%`, background: styles.pumpBColor}}></div>
               </div>
 
-              {/* Pumpen Inputs nebeneinander */}
               <div style={{display: 'flex', gap: '15px'}}>
                 <div style={{flex: 1}}>
                   <label style={{...styles.labelSmall, color: styles.pumpAColor}}>🔴 Pumpe A (sek)</label>
@@ -229,9 +224,30 @@ const ConfigForm: React.FC = () => {
         })}
       </div>
 
-      {/* --- 3. FOOTER (Kalibrierung & Save) --- */}
+      {/* FOOTER BEREICH */}
       <div style={{background: '#252525', padding: '20px', borderRadius: '16px', borderTop: '4px solid #03dac6'}}>
-        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px'}}>
+        
+        {/* NEU: Flaschengrößen */}
+        <div style={{display: 'flex', gap: '15px', marginBottom: '20px'}}>
+          <div style={{flex: 1}}>
+            <h4 style={{margin: '0 0 5px 0', color: styles.pumpAColor}}>Flasche A (ml)</h4>
+            <input 
+              type="number" step="100" value={bottleA}
+              onChange={(e) => setBottleA(parseInt(e.target.value))}
+              style={{width: '100%', padding: '10px', borderRadius: '8px', background: '#333', border: '1px solid #555', color: 'white'}}
+            />
+          </div>
+          <div style={{flex: 1}}>
+            <h4 style={{margin: '0 0 5px 0', color: styles.pumpBColor}}>Flasche B (ml)</h4>
+            <input 
+              type="number" step="100" value={bottleB}
+              onChange={(e) => setBottleB(parseInt(e.target.value))}
+              style={{width: '100%', padding: '10px', borderRadius: '8px', background: '#333', border: '1px solid #555', color: 'white'}}
+            />
+          </div>
+        </div>
+
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', paddingTop: '10px', borderTop: '1px solid #333'}}>
           <div>
             <h4 style={{margin: 0}}>📏 Kalibrierung</h4>
             <span style={{fontSize: '0.8rem', color: '#888'}}>Sekunden für 100ml</span>
