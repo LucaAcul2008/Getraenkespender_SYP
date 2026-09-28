@@ -108,28 +108,20 @@ def emergency_stop_all():
 def run_recipe(pump_a_sec, pump_b_sec, active_btn_led=None):
     global is_busy, emergency_stop
     if is_busy: return
-    
+
     empty, _ = is_bottle_empty(pump_a_sec, pump_b_sec)
     if empty:
-        stop_flag = [False]
-        _thread.start_new_thread(blink_all_leds_async, (stop_flag,))
-        time.sleep(5)
-        stop_flag[0] = True
+        for _ in range(10):
+            set_leds(1, 1, 1)
+            time.sleep(0.25)
+            all_leds_off()
+            time.sleep(0.25)
         return
 
     is_busy = True
     emergency_stop = False
-    led_stop = [False]
-
-    if active_btn_led is not None:
-        def blink_active():
-            while not led_stop[0]:
-                active_btn_led.value(1)
-                time.sleep(0.3)
-                active_btn_led.value(0)
-                time.sleep(0.3)
-            active_btn_led.value(0)
-        _thread.start_new_thread(blink_active, ())
+    last_blink = time.ticks_ms()
+    blink_on = False
 
     try:
         start = time.ticks_ms()
@@ -148,19 +140,24 @@ def run_recipe(pump_a_sec, pump_b_sec, active_btn_led=None):
             if not b_done and elapsed >= pump_b_sec:
                 PUMP_B_PIN.value(0)
                 b_done = True
+            if active_btn_led is not None:
+                now = time.ticks_ms()
+                if time.ticks_diff(now, last_blink) >= 300:
+                    blink_on = not blink_on
+                    active_btn_led.value(1 if blink_on else 0)
+                    last_blink = now
             time.sleep(0.05)
 
-        led_stop[0] = True
         if not emergency_stop:
             deduct_volume(pump_a_sec, pump_b_sec)
             if active_btn_led is not None:
                 active_btn_led.value(1)
                 time.sleep(0.5)
-                active_btn_led.value(0)
     finally:
         PUMP_A_PIN.value(0)
         PUMP_B_PIN.value(0)
-        led_stop[0] = True
+        if active_btn_led is not None:
+            active_btn_led.value(0)
         is_busy = False
 
 def run_recipe_async(pump_a_sec, pump_b_sec, active_btn_led=None):
@@ -191,9 +188,10 @@ def run_flush():
 CORS_HEADERS = 'Access-Control-Allow-Origin: *\r\nAccess-Control-Allow-Methods: GET, POST, OPTIONS\r\nAccess-Control-Allow-Headers: Content-Type\r\n'
 
 def send_json(conn, data, status=200):
-    body = ujson.dumps(data)
-    conn.send('HTTP/1.1 {} OK\r\nContent-Type: application/json\r\n{}\r\nContent-Length: {}\r\n\r\n{}'.format(
-        status, CORS_HEADERS, len(body), body).encode())
+    body = ujson.dumps(data).encode()
+    conn.send('HTTP/1.1 {} OK\r\nContent-Type: application/json\r\n{}Content-Length: {}\r\n\r\n'.format(
+        status, CORS_HEADERS, len(body)).encode())
+    conn.send(body)
 
 def send_options(conn):
     conn.send('HTTP/1.1 204 No Content\r\n{}\r\n'.format(CORS_HEADERS).encode())
